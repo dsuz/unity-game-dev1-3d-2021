@@ -86,12 +86,12 @@ public class ShootController : MonoBehaviour
     /// <param name="hitObject"></param>
     void Hit(Collider collider)
     {
-        // 今回は「当たったオブジェクトに Rigidbody コンポーネントがアタッチされていたら、メインカメラの方向に力を加える」処理をする
+        // 今回は「当たったオブジェクトに Rigidbody コンポーネントがアタッチされていたら、"メインカメラの方向＋上"に力を加える」処理をする
         Rigidbody rb = collider.gameObject.GetComponent<Rigidbody>();
 
         if (rb)
         {
-            rb.AddForce(Camera.main.transform.forward * _shootPower, ForceMode.Impulse);
+            rb.AddForce((Camera.main.transform.forward + Vector3.up) * _shootPower, ForceMode.Impulse);
         }
     }
 }
