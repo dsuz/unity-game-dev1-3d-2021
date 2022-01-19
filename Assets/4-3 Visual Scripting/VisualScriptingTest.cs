@@ -44,4 +44,19 @@ public class VisualScriptingTest : MonoBehaviour
 
         this.transform.Translate(dir * speed);
     }
+
+    public Vector2 GetInputAxes()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        Vector2 dir = new Vector2(h, v).normalized;
+        return dir;
+    }
+
+    public void Move(float x, float y, float z, float speed)
+    {
+        Vector3 dir = new Vector3(x, y, z).normalized * speed;
+        this.transform.Translate(dir * Time.deltaTime);
+    }
 }
